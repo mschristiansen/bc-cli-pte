@@ -31,7 +31,7 @@ Customer master data.
 | Field               | Type   | Editable | Description          |
 |---------------------|--------|----------|----------------------|
 | `id`                | GUID   | no       | SystemId             |
-| `number`            | string | yes      | Customer No.         |
+| `number`            | string | no       | Customer No.         |
 | `name`              | string | yes      | Customer name        |
 | `address`           | string | yes      | Address line 1       |
 | `address2`          | string | yes      | Address line 2       |
@@ -40,6 +40,7 @@ Customer master data.
 | `countryRegionCode` | string | yes      | Country/Region code  |
 | `phoneNumber`       | string | yes      | Phone number         |
 | `email`             | string | yes      | Email address        |
+| `lastModifiedDateTime` | datetime | no  | Last modified timestamp |
 
 ### GET /salesOrders
 
@@ -48,7 +49,8 @@ Sales orders only (quotes, invoices, etc. are excluded).
 | Field                   | Type   | Editable | Description                  |
 |-------------------------|--------|----------|------------------------------|
 | `id`                    | GUID   | no       | SystemId                     |
-| `number`                | string | yes      | Order No.                    |
+| `number`                | string | no       | Order No.                    |
+| `sellToCustomerNo`      | string | yes      | Sell-to customer number      |
 | `sellToCustomerName`    | string | yes      | Sell-to customer name        |
 | `shipToName`            | string | yes      | Ship-to name                 |
 | `shipToAddress`         | string | yes      | Ship-to address line 1       |
@@ -62,7 +64,8 @@ Sales orders only (quotes, invoices, etc. are excluded).
 | `requestedDeliveryDate` | date   | yes      | Requested delivery date      |
 | `promisedDeliveryDate`  | date   | yes      | Promised delivery date       |
 | `externalDocumentNo`    | string | yes      | External document number     |
-| `status`                | string | yes      | Order status (Open/Released) |
+| `status`                | string | no       | Order status (Open/Released) |
+| `lastModifiedDateTime`  | datetime | no     | Last modified timestamp      |
 
 ### GET /productionOrders
 
@@ -71,8 +74,8 @@ Production orders across all statuses.
 | Field          | Type   | Editable | Description                                               |
 |----------------|--------|----------|-----------------------------------------------------------|
 | `id`           | GUID   | no       | SystemId                                                  |
-| `number`       | string | yes      | Production order No.                                      |
-| `status`       | string | yes      | Simulated/Planned/Firm Planned/Released/Finished          |
+| `number`       | string | no       | Production order No.                                      |
+| `status`       | string | no       | Simulated/Planned/Firm Planned/Released/Finished          |
 | `sourceType`   | string | yes      | Source type (Item/Family/Sales Header)                    |
 | `sourceNo`     | string | yes      | Source number (item no. etc.)                             |
 | `description`  | string | yes      | Description                                               |
@@ -83,3 +86,4 @@ Production orders across all statuses.
 | `endingDate`   | date   | yes      | Ending date                                               |
 | `endingTime`   | time   | yes      | Ending time                                               |
 | `routingNo`    | string | yes      | Routing number                                            |
+| `lastModifiedDateTime` | datetime | no | Last modified timestamp                               |

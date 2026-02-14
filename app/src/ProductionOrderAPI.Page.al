@@ -29,10 +29,12 @@ page 50302 "Production Order API"
                 field(number; Rec."No.")
                 {
                     Caption = 'Number';
+                    Editable = false;
                 }
                 field(status; Rec.Status)
                 {
                     Caption = 'Status';
+                    Editable = false;
                 }
                 field(sourceType; Rec."Source Type")
                 {
@@ -73,6 +75,11 @@ page 50302 "Production Order API"
                 field(routingNo; Rec."Routing No.")
                 {
                     Caption = 'Routing No.';
+                }
+                field(lastModifiedDateTime; Rec.SystemModifiedAt)
+                {
+                    Caption = 'Last Modified Date Time';
+                    Editable = false;
                 }
             }
         }

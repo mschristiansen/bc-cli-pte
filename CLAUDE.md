@@ -25,7 +25,7 @@ CI builds run via AL-Go workflows on GitHub (`.github/workflows/CICD.yaml`).
 
 ### API Pages
 
-All pages follow the same pattern: `PageType = API`, read+update only (`InsertAllowed = false`, `DeleteAllowed = false`), `ODataKeyFields = SystemId`, `Extensible = false`.
+All pages follow the same pattern: `PageType = API`, read+update only (`InsertAllowed = false`, `DeleteAllowed = false`), `ODataKeyFields = SystemId`, `Extensible = false`. Primary key fields (`No.`, `Status` on Production Order) and `SystemId` are `Editable = false`. All pages expose `lastModifiedDateTime` (SystemModifiedAt) for delta sync.
 
 | Page  | File                        | Source Table          | Endpoint           |
 |-------|-----------------------------|-----------------------|--------------------|
@@ -35,10 +35,16 @@ All pages follow the same pattern: `PageType = API`, read+update only (`InsertAl
 
 API base path: `api/mschristiansen/bcCli/v1.0/companies({id})/`
 
+### Permission Set
+
+`BCCliAPI.PermissionSet.al` (ID 50300) — grants execute on all three API pages and Read+Modify on their source tables. Assign "BC Cli API" to users needing API access.
+
 ## Conventions
 
 - **ID range**: 50300–50399
 - **API config**: `APIPublisher = 'mschristiansen'`, `APIGroup = 'bcCli'`, `APIVersion = 'v1.0'`
 - Field names use camelCase in API pages
 - `SystemId` is always exposed as `id` with `Editable = false`
+- Primary key and status fields are `Editable = false` to prevent renames and bypass of release/change-status logic
+- All pages include `lastModifiedDateTime` for delta sync
 - `.vscode/` is gitignored — launch.json contains environment-specific settings

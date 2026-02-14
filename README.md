@@ -1,11 +1,33 @@
-# AL-Go Per Tenant Extension Template
+# BC Cli
 
-This template repository can be used for managing Per-tenant Extensions (PTEs) for Business Central.
+A Business Central Per-Tenant Extension (PTE) that exposes custom API pages for Customers, Sales Orders, and Production Orders.
 
-Please go to https://aka.ms/AL-Go to learn more.
+## API Endpoints
 
-## Contributing
+Base path: `api/mschristiansen/bcCli/v1.0/companies({companyId})/`
 
-Please read [this](https://github.com/microsoft/AL-Go/blob/main/Scenarios/Contribute.md) description on how to contribute to AL-Go for GitHub.
+| Endpoint             | Source Table            | Description              |
+|----------------------|-------------------------|--------------------------|
+| `/customers`         | Customer (18)           | Customer master data     |
+| `/salesOrders`       | Sales Header (36)       | Sales orders             |
+| `/productionOrders`  | Production Order (5405) | Production orders        |
 
-We do not accept Pull Requests on the template repository directly.
+All endpoints support GET and PATCH. POST and DELETE are disabled.
+
+See [API.md](API.md) for full field reference.
+
+## Setup
+
+1. Open `al.code-workspace` in VS Code
+2. Download symbols: `Ctrl+Shift+P` > "AL: Download Symbols"
+3. Build: `Ctrl+Shift+B`
+4. Publish: `F5`
+
+Assign the **BC Cli API** permission set to users that need API access.
+
+## Configuration
+
+- **Publisher**: Mikkel Christiansen
+- **ID range**: 50300–50399
+- **Runtime**: 16.0 (BC 2025 release wave 2)
+- **CI/CD**: [AL-Go for GitHub](https://aka.ms/AL-Go)

@@ -30,6 +30,11 @@ page 50301 "Sales Order API"
                 field(number; Rec."No.")
                 {
                     Caption = 'Number';
+                    Editable = false;
+                }
+                field(sellToCustomerNo; Rec."Sell-to Customer No.")
+                {
+                    Caption = 'Sell-to Customer No.';
                 }
                 field(sellToCustomerName; Rec."Sell-to Customer Name")
                 {
@@ -86,6 +91,12 @@ page 50301 "Sales Order API"
                 field(status; Rec.Status)
                 {
                     Caption = 'Status';
+                    Editable = false;
+                }
+                field(lastModifiedDateTime; Rec.SystemModifiedAt)
+                {
+                    Caption = 'Last Modified Date Time';
+                    Editable = false;
                 }
             }
         }

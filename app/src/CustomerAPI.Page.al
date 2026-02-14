@@ -29,6 +29,7 @@ page 50300 "Customer API"
                 field(number; Rec."No.")
                 {
                     Caption = 'Number';
+                    Editable = false;
                 }
                 field(name; Rec.Name)
                 {
@@ -61,6 +62,11 @@ page 50300 "Customer API"
                 field(email; Rec."E-Mail")
                 {
                     Caption = 'Email';
+                }
+                field(lastModifiedDateTime; Rec.SystemModifiedAt)
+                {
+                    Caption = 'Last Modified Date Time';
+                    Editable = false;
                 }
             }
         }
