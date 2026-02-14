@@ -1,0 +1,27 @@
+{
+  "id": "e1a0b2c3-d4e5-6f78-9a0b-1c2d3e4f5a6b",
+  "name": "BC Cli",
+  "publisher": "Mikkel Christiansen",
+  "version": "1.0.0.0",
+  "brief": "Custom API for Business Central",
+  "description": "Exposes Customers, Sales Orders, and Production Orders via custom API pages.",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "platform": "27.0.0.0",
+  "application": "27.0.0.0",
+  "idRanges": [
+    {
+      "from": 50300,
+      "to": 50399
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
+  },
+  "runtime": "16.0"
+}
