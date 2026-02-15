@@ -9,5 +9,6 @@ permissionset 50300 "BC Cli API"
         page "Production Order API" = X,
         tabledata Customer = RM,
         tabledata "Sales Header" = RM,
-        tabledata "Production Order" = RM;
+        tabledata "Production Order" = RM,
+        codeunit "Prod. Order Status Management" = X;
 }

@@ -84,4 +84,33 @@ page 50302 "Production Order API"
             }
         }
     }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(release)
+            {
+                Caption = 'Release';
+
+                trigger OnAction()
+                var
+                    ChangeProdOrderStatus: Codeunit "Prod. Order Status Management";
+                begin
+                    ChangeProdOrderStatus.ChangeProdOrderStatus(Rec, Rec.Status::Released, WorkDate(), false);
+                end;
+            }
+            action(finish)
+            {
+                Caption = 'Finish';
+
+                trigger OnAction()
+                var
+                    ChangeProdOrderStatus: Codeunit "Prod. Order Status Management";
+                begin
+                    ChangeProdOrderStatus.ChangeProdOrderStatus(Rec, Rec.Status::Finished, WorkDate(), false);
+                end;
+            }
+        }
+    }
 }
