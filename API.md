@@ -33,6 +33,45 @@ Single record access: `/{entitySetName}({id})` where `id` is a SystemId GUID.
 
 OData query options: `$filter`, `$select`, `$top`, `$skip`, `$orderby`, `$count`.
 
+## Query Patterns
+
+List endpoints return all records by default. Customers and production orders can have large volumes — always use `$filter` or `$top` to limit results for these endpoints. Sales orders are typically low volume and safe to list without filtering. BC paginates automatically via `@odata.nextLink` but initial responses can still be large.
+
+**Limit results:**
+```
+GET /customers?$top=50
+```
+
+**Paginate with `$skip`** — requires `$orderby` for consistent results across pages:
+```
+GET /customers?$orderby=number&$top=50
+GET /customers?$orderby=number&$top=50&$skip=50
+```
+
+**Filter by field value:**
+```
+GET /customers?$filter=city eq 'London'
+GET /customers?$filter=countryRegionCode eq 'GB'
+GET /salesOrders?$filter=sellToCustomerNo eq '10000'
+GET /productionOrders?$filter=status eq 'Released'
+```
+
+**Text matching:**
+```
+GET /customers?$filter=startswith(name, 'Contoso')
+GET /customers?$filter=contains(name, 'Fabrikam')
+```
+
+**Delta sync** — use `lastModifiedDateTime` to fetch only records changed since last sync:
+```
+GET /customers?$filter=lastModifiedDateTime gt 2025-01-15T00:00:00Z
+```
+
+**Select specific fields** to reduce payload size:
+```
+GET /customers?$select=number,name,city
+```
+
 ## Endpoints
 
 ### GET /customers
